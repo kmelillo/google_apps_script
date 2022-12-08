@@ -1,3 +1,4 @@
+// Populate ORG in column B for email address in column A
 function getUserOrg() { // placing in column C
   var pageToken, page;
   var ss = SpreadsheetApp.getActive();
@@ -6,7 +7,7 @@ function getUserOrg() { // placing in column C
   var range = active_sheet.getRange("B2:B" + last_row);
   var range_notation = range.getA1Notation();
   for (row = 2, len=last_row; row <= len; row++) {;
-    var modUserOrg = active_sheet.getRange("C" + row); 
+    var modUserOrg = active_sheet.getRange("B" + row); 
     var currentemail = active_sheet.getRange("A" + row).getValue();
     goodDump = 1
     try {
