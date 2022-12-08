@@ -1,0 +1,27 @@
+function getUserOrg() { // placing in column C
+  var pageToken, page;
+  var ss = SpreadsheetApp.getActive();
+  //var active_sheet = SpreadsheetApp.setActiveSheet(ss.getSheetByName('Sheet1'));
+  var last_row = active_sheet.getLastRow();
+  var range = active_sheet.getRange("B2:B" + last_row);
+  var range_notation = range.getA1Notation();
+  for (row = 2, len=last_row; row <= len; row++) {;
+    var modUserOrg = active_sheet.getRange("C" + row); 
+    var currentemail = active_sheet.getRange("A" + row).getValue();
+    goodDump = 1
+    try {
+      var userDump = AdminDirectory.Users.get(currentemail,{projection: 'full'}); // ALL USER DATA of current user, including customSchemas
+    }
+    catch(err) {
+      goodDump = 0;
+    } 
+    if (goodDump == 1) {
+      var userOrg = userDump.orgUnitPath;
+    }
+    else {
+      userOrg = "ERROR";
+    }
+    modUserOrg.setValue(userOrg);
+    //Logger.log(departedDate);
+  }
+}
