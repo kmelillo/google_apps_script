@@ -1,4 +1,4 @@
-// Populate ORG in column B for email address in column A
+// Populate ORG in column B for email address in column A for the currently active sheet.
 function getUserOrg() { // placing in column C
   var pageToken, page;
   var ss = SpreadsheetApp.getActive();
